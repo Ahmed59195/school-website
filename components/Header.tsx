@@ -48,7 +48,7 @@ export default function Header() {
             <Link
               key={link.path}
               href={link.path}
-              className="block py-2 text-green-950 hover:text-blue-600"
+              className="block py-2 text-white hover:text-blue-600"
               onClick={() => setMenuOpen(false)}
             >
               {link.name}

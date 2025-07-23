@@ -53,8 +53,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative w-full h-[60vh]">
         <Image
-          src="images/school1.jpeg"
+          src="/images/school1.jpeg"
           alt="School Background"
+          height={400}
+          width={400}
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
@@ -77,6 +79,7 @@ export default function Home() {
           <Image src="/school4.jpeg" alt="Gallery 2" width={400} height={300} className="w-full h-auto rounded-lg" />
           <Image src="/school-bg1.jpg" alt="Gallery 3" width={400} height={300} className="w-full h-auto rounded-lg" />
         </div>
+        
       </section>
 
       {/* Events Section */}
@@ -94,5 +97,6 @@ export default function Home() {
         </div>
       </section>
     </main>
+    
   );
 }
