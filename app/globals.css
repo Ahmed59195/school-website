@@ -17,6 +17,14 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
+
+.font-notoUrdu {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  direction: rtl;
+}
+
 }
 
 body {
