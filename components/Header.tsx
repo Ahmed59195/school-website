@@ -36,7 +36,7 @@ export default function Header() {
         {/* Mobile Toggle Button */}
         <div className="md:hidden">
           <button onClick={() => setMenuOpen(!menuOpen)}>
-            {menuOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+            {menuOpen ? <HiX className="text-white" size={24} /> : <HiMenu className="text-white" size={24} />}
           </button>
         </div>
       </div>

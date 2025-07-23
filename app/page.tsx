@@ -61,10 +61,10 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <div className="text-center text-white px-4">
-            <h1 className="text-4xl md:text-5xl font-bold">
+            <h1 className="text-4xl md:text-5xl font-bold border-black">
               GBPS D-1 Area
             </h1>
-            <p className="mt-2 text-lg md:text-xl">
+            <p className="mt-2 text-lg md:text-xl border-black">
               Inspiring Young Minds — روشن خیال نسل کی تعمیر
             </p>
           </div>
