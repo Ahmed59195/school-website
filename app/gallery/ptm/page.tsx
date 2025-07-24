@@ -6,13 +6,13 @@ import 'yet-another-react-lightbox/styles.css';
 import { useState } from 'react';
 
 const ptmImages = [
-  { src: '/images/ptm/ptm1.jpeg', alt: 'Parents Teachers Meeting' },
+  { src: '/images/ptm/ptm7.jpeg', alt: 'Parents Teachers Meeting' },
   { src: '/images/ptm/ptm2.jpeg', alt: 'Parents Teachers Meeting' },
   { src: '/images/ptm/ptm3.jpeg', alt: 'Parents Teachers Meeting' },
   { src: '/images/ptm/ptm4.jpeg', alt: 'Parents Teachers Meeting' },
   { src: '/images/ptm/ptm5.jpeg', alt: 'Parents Teachers Meeting' },
   { src: '/images/ptm/ptm6.jpeg', alt: 'Parents Teachers Meeting' },
-  { src: '/images/ptm/ptm7.jpeg', alt: 'Parents Teachers Meeting' },
+  { src: '/images/ptm/ptm1.jpeg', alt: 'Parents Teachers Meeting' },
   { src: '/images/ptm/ptm8.jpeg', alt: 'Parents Teachers Meeting' },
 ];
 

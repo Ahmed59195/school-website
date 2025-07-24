@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import EventCard from '@/components/EventCard';
 
@@ -16,13 +16,33 @@ const events = [
     description: 'تمام کلاسز کے وسط مدتی امتحانات کا انعقاد کیا جائے گا۔',
   },
   {
-    title: 'سپورٹس ڈے',
+    title: 'سائنسی نمائش',
     date: '20 نومبر 2025',
-    description: 'تمام جماعتوں کے لیے تفریحی آؤٹ ڈور گیمز اور مقابلے منعقد ہوں گے۔',
+    description: 'سکول میں سائنس نمائش کا انعقاد کیا جائے گا۔',
   },
 ];
 
 export default function Home() {
+
+  const messages = [
+  "Inspiring Young Minds — روشن خیال نسل کی تعمیر",
+  "Welcome to GBPS D-1 Area!",
+  "!خوش آمدید",
+  "Learn, Grow, Succeed — !سیکھو، بڑھو، کامیاب ہو",
+];
+
+const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setCurrentMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [messages.length]);
+
+
+
   const [showPopup, setShowPopup] = useState(true);
 
   return (
@@ -51,25 +71,23 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <section className="relative w-full h-[60vh]">
-        <Image
-          src="/images/school1.jpeg"
-          alt="School Background"
-          height={400}
-          width={400}
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-          <div className="text-center text-white px-4">
-            <h1 className="text-4xl md:text-5xl font-bold border-black">
-              GBPS D-1 Area
-            </h1>
-            <p className="mt-2 text-lg md:text-xl border-black">
-              Inspiring Young Minds — روشن خیال نسل کی تعمیر
-            </p>
-          </div>
-        </div>
-      </section>
+<section className="relative w-full h-[60vh]">
+  <Image
+    src="/images/school1.jpeg"
+    alt="School Background"
+    height={400}
+    width={400}
+    className="w-full h-full object-cover"
+  />
+  <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+    <div className="text-center text-white px-4">
+      <h1 className="text-4xl md:text-5xl font-bold mb-4">GBPS D-1 Area</h1>
+      <p className="text-lg md:text-xl font-semibold transition-opacity duration-700 ease-in-out">
+        {messages[currentMessageIndex]}
+      </p>
+    </div>
+  </div>
+</section>
 
       {/* Gallery Section */}
       <section className="max-w-6xl mx-auto px-4">
