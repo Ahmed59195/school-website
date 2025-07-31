@@ -10,6 +10,7 @@ const navLinks = [
   { name: 'Admissions', path: '/admissions' },
   { name: 'Contact', path: '/contact' },
   { name: 'Careers', path: '/careers' },
+  { name: 'Admin', path: '/admin' },
 ];
 
 export default function Header() {
