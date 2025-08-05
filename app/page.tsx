@@ -91,12 +91,17 @@ export default function Home() {
       <section className="relative w-full h-auto flex flex-col lg:flex-row">
         {/* Hero Image */}
         <div className="w-full lg:w-[80%] relative h-[60vh]">
-          <Image
-            src="/images/school1.jpeg"
-            alt="School Background"
-            fill
-            className="object-cover w-full h-full"
-          />
+       <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="object-cover w-full h-full"
+>
+  <source src="/school-video.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
             <div className="text-center text-white px-4">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">GBPS D-1 Area</h1>
