@@ -5,6 +5,13 @@ import Image from 'next/image';
 import EventCard from '@/components/EventCard';
 import NewsTicker from '@/components/NewsTicker';
 
+const messages = [
+  "Inspiring Young Minds — روشن خیال نسل کی تعمیر",
+  "Welcome to GBPS D-1 Area!",
+  "!خوش آمدید",
+  "Learn, Grow, Succeed — !سیکھو، بڑھو، کامیاب ہو",
+];
+
 const events = [
   {
     title: 'یوم آزادی کی تقریبات',
@@ -32,13 +39,6 @@ const newsItems = [
 ];
 
 export default function Home() {
-  const messages = [
-    "Inspiring Young Minds — روشن خیال نسل کی تعمیر",
-    "Welcome to GBPS D-1 Area!",
-    "!خوش آمدید",
-    "Learn, Grow, Succeed — !سیکھو، بڑھو، کامیاب ہو",
-  ];
-
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(true);
   const [currentNewsIndex, setCurrentNewsIndex] = useState(0);

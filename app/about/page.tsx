@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 const teachers = [
   { name: 'Miss Shazia Samad', className: 'ECE' },
   { name: 'Miss Bushra Bano', className: 'ECE' },
@@ -9,6 +7,23 @@ const teachers = [
   { name: 'Sir Muhammad Masood ur Rehman Nasir', className: 'Class IV' },
   { name: 'Miss Urooj Fatima', className: 'Class V' },
 ];
+
+function Avatar({ name, size = 100 }: { name: string; size?: number }) {
+  const initials = name
+    .split(' ')
+    .filter((w) => w.length > 1)
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join('');
+  return (
+    <div
+      style={{ width: size, height: size, fontSize: size * 0.35 }}
+      className="rounded-full bg-green-700 text-white flex items-center justify-center font-bold select-none shrink-0"
+    >
+      {initials}
+    </div>
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -22,13 +37,7 @@ export default function AboutPage() {
 
       <h2 className="text-2xl font-semibold mb-6 mt-10">Headmaster</h2>
       <div className="flex items-center gap-4 border p-4 rounded-md shadow-sm mb-10">
-        <Image
-          src="/placeholder.jpg"
-          alt="Headmaster"
-          width={100}
-          height={100}
-          className="rounded-full object-cover"
-        />
+        <Avatar name="Ahmed Ali" />
         <div>
           <p className="text-xl font-semibold">Ahmed Ali</p>
           <p className="text-gray-600">Headmaster</p>
@@ -42,13 +51,9 @@ export default function AboutPage() {
             key={index}
             className="border rounded-lg p-4 shadow hover:shadow-md transition"
           >
-            <Image
-              src="/placeholder.jpg"
-              alt={teacher.name}
-              width={100}
-              height={100}
-              className="rounded-full mx-auto mb-4"
-            />
+            <div className="flex justify-center mb-4">
+              <Avatar name={teacher.name} />
+            </div>
             <h3 className="text-lg font-bold text-center">{teacher.name}</h3>
             <p className="text-center text-gray-600">{teacher.className}</p>
           </div>
