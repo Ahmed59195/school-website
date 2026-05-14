@@ -4,8 +4,8 @@
 import { useEffect, useState } from 'react'
 
 const newsList = [
-  "Admission Open for 2025-26!",
-  "Schools will be re-opened from August 1, 2025",
+  "Admission Open for 2026-27!",
+  "Schools will be re-opened from August 1, 2026",
   "Independence Day celebrations starting from August 1",
   "Mid-Term Exams will be held in October",
   "Textbooks distribution completed",
