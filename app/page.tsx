@@ -30,13 +30,6 @@ const events = [
   },
 ];
 
-const stats = [
-  { label: 'Students', value: '500+' },
-  { label: 'Teachers', value: '12' },
-  { label: 'Classes', value: 'ECE–V' },
-  { label: 'Years of Service', value: '30+' },
-];
-
 const galleryImages = [
   { src: '/school-bg.jpg', alt: 'School Building' },
   { src: '/school4.jpeg', alt: 'School Activity' },
@@ -111,18 +104,6 @@ export default function Home() {
               Learn More
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* Stats Strip */}
-      <section className="bg-green-800 text-white py-8 px-4">
-        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <div className="text-3xl font-extrabold text-amber-400">{stat.value}</div>
-              <div className="text-sm text-white/80 mt-1">{stat.label}</div>
-            </div>
-          ))}
         </div>
       </section>
 
