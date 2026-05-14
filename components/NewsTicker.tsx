@@ -1,30 +1,26 @@
-// app/components/NewsTicker.tsx
 'use client'
 
-import { useEffect, useState } from 'react'
-
 const newsList = [
-  "Admission Open for 2026-27!",
-  "Schools will be re-opened from August 1, 2026",
-  "Independence Day celebrations starting from August 1",
-  "Mid-Term Exams will be held in October",
-  "Textbooks distribution completed",
+  "📢 Admission Open for 2026-27 — Apply Now!",
+  "🏫 New academic session starts August 1, 2026",
+  "🇵🇰 Independence Day celebrations — August 14, 2026",
+  "📝 Mid-Term Exams scheduled for October 2026",
+  "📚 Textbooks distribution completed",
+  "📷 New gallery photos added — check it out!",
 ]
 
 export default function NewsTicker() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % newsList.length)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
-    <div className="bg-yellow-100 text-black p-2 rounded-md shadow-md overflow-hidden h-12 w-full">
-      <div className="animate-slide-vertical">
-        <p className="text-center font-semibold">{newsList[currentIndex]}</p>
+    <div className="bg-green-800 text-white text-sm py-2 overflow-hidden flex items-center">
+      <span className="bg-amber-500 text-black font-bold px-3 py-1 text-xs shrink-0 uppercase tracking-wide mr-4">
+        Latest
+      </span>
+      <div className="overflow-hidden flex-1">
+        <div className="animate-marquee whitespace-nowrap">
+          {[...newsList, ...newsList].map((item, i) => (
+            <span key={i} className="inline-block mr-14 text-white/90">{item}</span>
+          ))}
+        </div>
       </div>
     </div>
   )

@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import EventCard from '@/components/EventCard';
-import NewsTicker from '@/components/NewsTicker';
 
 const messages = [
-  "Inspiring Young Minds — روشن خیال نسل کی تعمیر",
+  "Inspiring Young Minds",
   "Welcome to GBPS D-1 Area!",
-  "!خوش آمدید",
-  "Learn, Grow, Succeed — !سیکھو، بڑھو، کامیاب ہو",
+  "روشن خیال نسل کی تعمیر",
+  "Learn · Grow · Succeed",
 ];
 
 const events = [
@@ -30,113 +30,112 @@ const events = [
   },
 ];
 
-const newsItems = [
-  '🌟 داخلے جاری ہیں - ابھی اپلائی کریں!',
-  '🎉 یومِ آزادی کی تیاریاں شروع!',
-  '📢 نیا تعلیمی سیشن 1 اگست سے شروع ہوگا',
-  '📝 طلباء میں درسی کتابیں تقسیم کر دی گئی ہیں۔',
-  '📷 نئی تصویری گیلری اپڈیٹ ہو گئی ہے',
+const stats = [
+  { label: 'Students', value: '500+' },
+  { label: 'Teachers', value: '12' },
+  { label: 'Classes', value: 'ECE–V' },
+  { label: 'Years of Service', value: '30+' },
+];
+
+const galleryImages = [
+  { src: '/school-bg.jpg', alt: 'School Building' },
+  { src: '/school4.jpeg', alt: 'School Activity' },
+  { src: '/school-bg1.jpg', alt: 'School Campus' },
 ];
 
 export default function Home() {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(true);
-  const [currentNewsIndex, setCurrentNewsIndex] = useState(0);
 
   useEffect(() => {
-    const messageInterval = setInterval(() => {
-      setCurrentMessageIndex((prevIndex) => (prevIndex + 1) % messages.length);
+    const interval = setInterval(() => {
+      setCurrentMessageIndex((prev) => (prev + 1) % messages.length);
     }, 3000);
-
-    const newsInterval = setInterval(() => {
-      setCurrentNewsIndex((prevIndex) => (prevIndex + 1) % newsItems.length);
-    }, 4000);
-
-    return () => {
-      clearInterval(messageInterval);
-      clearInterval(newsInterval);
-    };
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <main className="space-y-16 relative">
-      <div className="w-full md:w-auto px-4 md:px-0 mb-6 md:mb-0 md:col-span-1">
-  <h2 className="text-lg font-bold mb-2">📢 News & Events</h2>
-  <NewsTicker />
-</div>
-
-      {/* Popup Image Modal */}
+    <div>
+      {/* Announcement Popup */}
       {showPopup && (
-        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center">
-          <div className="relative max-w-md w-[90%]">
+        <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
+          <div className="relative max-w-md w-full bg-white rounded-2xl overflow-hidden shadow-2xl">
             <button
               onClick={() => setShowPopup(false)}
-              className="absolute -top-3 -right-3 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center"
+              className="absolute top-3 right-3 z-10 bg-red-600 hover:bg-red-700 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold transition-colors"
               aria-label="Close"
             >
-              ❌
+              ✕
             </button>
             <Image
               src="/announcement.jpeg"
               alt="Announcement"
               width={600}
               height={400}
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="w-full h-auto"
             />
           </div>
         </div>
       )}
 
-      {/* Hero + News Ticker Section */}
-      <section className="relative w-full h-auto flex flex-col lg:flex-row">
-        {/* Hero Image */}
-        <div className="w-full lg:w-[80%] relative h-[60vh]">
-       <video
-  autoPlay
-  muted
-  loop
-  playsInline
-  className="object-cover w-full h-full"
->
-  <source src="/school-video.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-
-          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-            <div className="text-center text-white px-4">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">GBPS D-1 Area</h1>
-              <p className="text-lg md:text-xl font-semibold transition-opacity duration-700 ease-in-out">
-                {messages[currentMessageIndex]}
-              </p>
-            </div>
+      {/* Hero Section */}
+      <section className="relative w-full h-[75vh] min-h-[500px] overflow-hidden">
+        <video
+          autoPlay muted loop playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/school-video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        <div className="relative h-full flex flex-col items-center justify-center text-center text-white px-4">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-sm mb-6">
+            🇵🇰 Government Boys Primary School
           </div>
-        </div>
-
-        {/* Vertical News Ticker */}
-        <div className="w-full lg:w-[20%] border-t lg:border-t-0 lg:border-l border-gray-300 bg-white">
-          <div className="text-center font-bold text-green-700 py-2 border-b border-gray-200 bg-green-100">
-            📢 تازہ خبریں
-          </div>
-          <div className="h-[60px] flex items-center justify-center px-2 text-sm font-medium text-gray-700 animate-pulse text-center lg:text-right">
-            {newsItems[currentNewsIndex]}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">
+            GBPS D-1 Area
+          </h1>
+          <p className="text-xl md:text-2xl font-medium text-white/90 mb-8 min-h-[2rem] transition-all duration-500">
+            {messages[currentMessageIndex]}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link
+              href="/admissions"
+              className="bg-green-600 hover:bg-green-500 text-white font-semibold px-7 py-3 rounded-full transition-colors shadow-lg"
+            >
+              Apply for Admission
+            </Link>
+            <Link
+              href="/about"
+              className="bg-white/15 hover:bg-white/25 backdrop-blur-sm border border-white/30 text-white font-semibold px-7 py-3 rounded-full transition-colors"
+            >
+              Learn More
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-6 text-center">📸 School Gallery</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <Image src="/school-bg.jpg" alt="Gallery 1" width={400} height={300} className="w-full h-auto rounded-lg" />
-          <Image src="/school4.jpeg" alt="Gallery 2" width={400} height={300} className="w-full h-auto rounded-lg" />
-          <Image src="/school-bg1.jpg" alt="Gallery 3" width={400} height={300} className="w-full h-auto rounded-lg" />
+      {/* Stats Strip */}
+      <section className="bg-green-800 text-white py-8 px-4">
+        <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          {stats.map((stat) => (
+            <div key={stat.label}>
+              <div className="text-3xl font-extrabold text-amber-400">{stat.value}</div>
+              <div className="text-sm text-white/80 mt-1">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Events Section */}
-      <section className="max-w-6xl mx-auto py-12 px-4">
-        <h2 className="text-3xl font-bold mb-6 text-center">📅 اہم تقریبات</h2>
-        <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <section className="max-w-6xl mx-auto py-16 px-4">
+        <div className="text-center mb-10">
+          <span className="text-xs font-semibold uppercase tracking-widest text-green-700 bg-green-50 px-3 py-1 rounded-full">
+            Upcoming
+          </span>
+          <h2 className="text-3xl font-bold mt-3 text-gray-800">📅 اہم تقریبات</h2>
+          <p className="text-gray-500 mt-2 text-sm">Important school events and activities for 2026</p>
+        </div>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {events.map((event, index) => (
             <EventCard
               key={index}
@@ -147,6 +146,62 @@ export default function Home() {
           ))}
         </div>
       </section>
-    </main>
+
+      {/* Gallery Section */}
+      <section className="bg-gray-50 py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-xs font-semibold uppercase tracking-widest text-green-700 bg-green-50 px-3 py-1 rounded-full">
+              Our School
+            </span>
+            <h2 className="text-3xl font-bold mt-3 text-gray-800">📸 School Gallery</h2>
+            <p className="text-gray-500 mt-2 text-sm">Glimpses of life at GBPS D-1 Area</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {galleryImages.map((img, i) => (
+              <div key={i} className="rounded-xl overflow-hidden shadow-md aspect-video group">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  width={600}
+                  height={400}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              href="/gallery"
+              className="inline-flex items-center gap-2 bg-green-800 hover:bg-green-700 text-white font-medium px-6 py-2.5 rounded-full transition-colors shadow-sm"
+            >
+              View Full Gallery →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="bg-green-900 text-white py-16 px-4 text-center">
+        <h2 className="text-3xl font-bold mb-3">داخلے جاری ہیں — 2026-27</h2>
+        <p className="text-white/80 mb-8 max-w-xl mx-auto">
+          Admissions are open for the new academic session. Enroll your child today and invest in their future.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="/admissions"
+            className="bg-amber-500 hover:bg-amber-400 text-black font-bold px-8 py-3 rounded-full transition-colors shadow-lg"
+          >
+            Apply Now
+          </Link>
+          <Link
+            href="/contact"
+            className="bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium px-8 py-3 rounded-full transition-colors"
+          >
+            Contact Us
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }

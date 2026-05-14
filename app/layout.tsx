@@ -1,9 +1,9 @@
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import NewsTicker from '@/components/NewsTicker';
 import { Inter } from 'next/font/google';
 import WhatsAppButton from '@/components/WhatsappButton';
-
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -17,7 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        <main className="max-w-6xl mx-auto p-4">{children}</main>
+        <NewsTicker />
+        <main className="min-h-screen">{children}</main>
         <Footer />
         <WhatsAppButton />
       </body>
