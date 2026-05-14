@@ -48,23 +48,6 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* Quick Stats */}
-      <section className="bg-gray-50 py-10 px-4">
-        <div className="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            { label: 'Students', value: '500+' },
-            { label: 'Teachers', value: '12' },
-            { label: 'Classes', value: 'ECE–V' },
-            { label: 'Established', value: '1990s' },
-          ].map((s) => (
-            <div key={s.label} className="bg-white rounded-xl p-5 shadow-sm">
-              <div className="text-2xl font-extrabold text-green-700">{s.value}</div>
-              <div className="text-sm text-gray-500 mt-1">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Headmaster */}
       <section className="max-w-4xl mx-auto px-4 py-12">
         <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
